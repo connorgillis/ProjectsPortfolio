@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags%}
+
+{% load crispy_forms_tags %}
+
+
+{% block body_class %}template-blogcontactpage{% endblock %}
+
+{% block content %}
+
+<main class="page contact-page">
+  <section class="portfolio-block contact">
+    <div class="container">
+      <div class="heading">
+        <h2>Thanks</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="contact-info portfolio-info-card">
+            <div class="about-me text-center">
+                <p><strong>Thanks!</strong>&nbsp;You'll hear back from me very soon.</p><a class="btn btn-outline-primary" role="button" href="{% slugurl 'blog' %}">Portfolio</a><a class="btn btn-outline-primary" style="margin-left:30px" role="button" href="{% slugurl 'resume' %}">Resumé</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+/* 
+@media (max-width: 575.98px) {
+  .carousel-inner {
+    height: 200px;
+  }
+ }
+
+ @media (min-width: 575.98px) {
+   .carousel-inner {
+     height: 400px;
+   }
+  } */

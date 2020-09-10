@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags%}
+
+{% load crispy_forms_tags %}
+
+
+{% block body_class %}template-blogcontactpage{% endblock %}
+
+{% block content %}
+
+    <main class="page contact-page">
+        <section class="portfolio-block contact">
+            <div class="container">
+              <div class="heading">
+                  <h2>Contact me</h2>
+              </div>
+              <div class="row">
+
+              <div class="col-md-5 col-lg-4">
+                <div class="contact-info portfolio-info-card">
+                  <h2>Contact Info</h2>
+                  <div class="row">
+                    <div class="col-1"><i class="icon ion-ios-person"></i></div>
+                    <div class="col-9"><span>Connor Gillis</span></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-1"><i class="icon ion-ios-call"></i></div>
+                    <div class="col-9"><span>+1 (203) 521-3481</span></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-1"><i class="icon ion-ios-at"></i></div>
+                    <div class="col-9"><span>contact@connorgillis.me</span></div>
+                  </div>
+
+                  <h2 style="margin-top:40px;">Connect</h2>
+                  <div class="row" style="margin-top:40px;">
+
+                    <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="connorjgillis"><a class="LI-simple-link" href='https://www.linkedin.com/in/connorjgillis?trk=profile-badge'>Connor Gillis</a></div>
+                  </div>
+                </div>
+                </div>
+                <div class="col-md-5 col-lg-8">
+                  <form action="{% pageurl page %}" method="POST">
+                      {% csrf_token %}
+                      {{ form|crispy}}
+                    <button class="btn btn-primary btn-block btn-lg" type="submit">Submit Form</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

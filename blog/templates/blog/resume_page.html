@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load wagtailcore_tags wagtailimages_tags%}
+
+{% block body_class %}template-blogresumepage{% endblock %}
+
+{% block content %}
+
+
+{{ page.intro }}
+
+
+<main class="page cv-page">
+  <section class="portfolio-block block-intro border-bottom">
+    <div class="container">
+      <div class="avatar" style="background-image:url({% static 'assets/img/avatars/connor.jpg' %});"></div>
+      <div class="about-me">
+        <p>Hi! I am <strong>Connor Gillis</strong>. Senior Computer/Data Science Student @ Marist. <br>Learn about me and what I'm working on.</p><a class="btn btn-outline-primary" role="button" href="#">Take a Look</a>
+        {% for item in resumeitemsskills %}
+        {% with item=item.specific %}
+        {% with categories=item.categories.all %}
+        {% if categories %}
+        {% for category in categories %}
+          {% if category.name == 'resume' %}
+            <a class="btn btn-outline-primary" style="margin-left:30px;" role="button" href="{{item.doc.url}}"download>Download Resume</a>
+          {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {% endwith %}
+        {% endfor %}
+      </div>
+      </div>
+    </div>
+  </section>
+  <section class="portfolio-block cv">
+    <div class="container">
+      <div class="work-experience group">
+        <div class="heading">
+          <h2 class="text-center">Work Experience</h2>
+        </div>
+        {% for item in resumeitemsskills %}
+        {% with item=item.specific %}
+        {% with categories=item.categories.all %}
+        {% if categories %}
+        {% for category in categories %}
+        <li style="display: inline">
+          {% if category.name == 'work_experience' %}
+          <div class="item">
+            <div class="row">
+              <div class="col-md-6">
+                <h3>{{ item.headA }}</h3>
+              </div>
+              <div class="col-md-6"><span class="period">{{ item.time }}</span></div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <h6>{{ item.headB }}</h6>
+              </div>
+              <div class="col-md-6"><span class="period"><h4 style="margin-top: -20px;" class="organization">{{ item.loc }}</h4>
+</span></div>
+            </div>
+            <p class="text-muted">{{ item.desc|richtext }}</p>
+          </div>
+          {% endif %}
+        </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% endwith %}
+        {% endfor %}
+
+
+      </div>
+
+      <div class="group">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="skills portfolio-info-card">
+              <h2>Skills</h2>
+              <div class="list-group">
+
+                {% for item in resumeitemsskills %}
+                {% with item=item.specific %}
+                {% with categories=item.categories.all %}
+                {% if categories %}
+                {% for category in categories %}
+                {% if category.name == 'skill' %}
+<!-- -->
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                  <div class="">
+                    <div class="row">
+                    <div class="col-md-7">
+                      <h5 class="mb-1">{{ item.head }}</h5>
+                    </div>
+                    <div class="col-md-4 ml-auto">
+                      {% for icon in item.icons.all %}
+                        <i style="font-size: 2em; margin-left: 25px;" class="{{ icon }}"></i>
+                      {% endfor %}
+                    </div>
+                    </div>
+                  </div>
+                  <p class="mb-1">{{ item.desc }}</p>
+                </a>
+
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                {% endwith %}
+                {% endfor %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="contact-info portfolio-info-card">
+              <h2>My Degree</h2>
+              <div class="row">
+                <div class="col-1"><i class="icon ion-ios-school"></i></div>
+                <div class="col-9"><span><strong>B.S. Computer Science</strong></span></div>
+              </div>
+
+              <div class="row">
+                <div class="col-1"><i class="icon ion-ios-remove-circle-outline"></i></div>
+                <div class="col-9"><span><strong>Minors:</strong> Global Studies, IT/IS</span></div>
+              </div>
+
+              <div class="row">
+                <div class="col-1"><i class="icon ion-ios-calendar"></i></div>
+                <div class="col-9"><strong>Expected: </strong>May 2020</span></div>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="contact-info portfolio-info-card">
+              <h2>Contact Info</h2>
+              <div class="row">
+                <div class="col-1"><i class="icon ion-ios-person"></i></div>
+                <div class="col-9"><span>Connor Gillis</span></div>
+              </div>
+              <div class="row">
+                <div class="col-1"><i class="icon ion-ios-call"></i></div>
+                <div class="col-9"><span>+1 (203) 521-3481</span></div>
+              </div>
+              <div class="row">
+                <div class="col-1"><i class="icon ion-ios-at"></i></div>
+                <div class="col-9"><span>contact@connorgillis.me</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="hobbies group">
+        <div class="heading">
+          <h2 class="text-center">Research Interests</h2>
+        </div>
+        <p class="text-center text-muted">{{ page.ri|richtext }}</p>
+      </div>
+
+
+
+      <div class="hobbies group">
+        <div class="heading">
+          <h2 class="text-center">Volunteer & Hobbies</h2>
+        </div>
+
+        <p class="text-center text-muted">{{ page.hobbies|richtext }}</p>
+
+
+      </div>
+
+    </div>
+  </section>
+</main>
+{% endblock %}
