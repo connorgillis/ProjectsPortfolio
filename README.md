@@ -1,7 +1,7 @@
 #Portfolio
 
 This is a non-production copy of the project repository. Check it out live @ www.connorgillis.me
-Note: settings.py has been modified. Google API keys, email server information, and django secret-keys have been obfuscated for the time being until I can append integration instructions into this readme. 
+Note: settings.py has been modified. Google API keys, email server information, and django secret-keys have been removed or set as env. variables for the time being until I can append integration instructions into this readme. 
 
 ## Overview
 
